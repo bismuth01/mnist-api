@@ -1,3 +1,4 @@
+import os
 from typing import Union
 from tensorflow.keras.models import load_model, Model
 from tensorflow.keras.preprocessing import image
@@ -5,8 +6,25 @@ import cv2
 import asyncio
 from fastapi import FastAPI, File, UploadFile
 import numpy as np
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+HOSTED_FRONTEND = os.environ.get('HOSTED_FRONTEND')
+TESTING_FRONTEND = os.environ.get('TESTING_FRONTEND')
+
+origins = [
+    HOSTED_FRONTEND,
+    TESTING_FRONTEND
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 IMG_SIZE = (28, 28)
 
