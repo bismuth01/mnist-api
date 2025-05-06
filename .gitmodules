@@ -1,0 +1,6 @@
+[submodule "models/CNN-MNIST"]
+	path = models/CNN-MNIST
+	url = https://github.com/Kartik-1902/CNN-MNIST.git
+[submodule "models/mnist-resnet50"]
+	path = models/mnist-resnet50
+	url = https://github.com/bismuth01/mnist-resnet50.git
